@@ -136,10 +136,10 @@ public class DefaultInterpolator : IInterpolator
         if (args == null)
             return null;
 
-        if (key.IndexOf('.') < 0)
+        if (key.IndexOf('#') < 0)
             return args.TryGetValue(key, out var value) ? value : null;
 
-        var keyParts = key.Split('.');
+        var keyParts = key.Split('#');
 
         object lastObject = args;
 
