@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 
 namespace Localizer.Extensions;
 
@@ -9,12 +10,14 @@ public class I18NextStringLocalizer : IStringLocalizer
 {
     private readonly string _defaultNamespace;
     private readonly II18Next _instance;
+    private readonly ILogger<I18NextStringLocalizer> _logger;
 
     private string _language;
 
-    public I18NextStringLocalizer(II18Next instance)
+    public I18NextStringLocalizer(II18Next instance, ILogger<I18NextStringLocalizer> logger)
     {
         _instance = instance;
+        _logger = logger;
 
         _defaultNamespace = instance.DefaultNamespace;
     }
@@ -65,6 +68,7 @@ public class I18NextStringLocalizer : IStringLocalizer
         }
         catch (TranslationNotFoundException ex)
         {
+            _logger.LogWarning(ex, "Translation not found for key \"{key}\" in namespace \"{namespace}\".", name, _defaultNamespace);
             return new LocalizedString(name, ex.AlternateString, true);
         }
     }

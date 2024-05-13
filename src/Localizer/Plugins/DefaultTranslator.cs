@@ -66,17 +66,7 @@ public class DefaultTranslator : ITranslator
         if (options == null)
             throw new ArgumentNullException(nameof(options));
 
-        string actualNamespace;
-
-        if (key.IndexOf(':') > -1)
-        {
-            actualNamespace = key.Substring(0, key.IndexOf(':'));
-            key = key.Substring(key.IndexOf(':') + 1);
-        }
-        else
-        {
-            actualNamespace = options.DefaultNamespace;
-        }
+        string actualNamespace = args["Namespace"] as string ?? options.DefaultNamespace;
 
         if (language.ToLower() == "cimode")
             return $"{actualNamespace}:{key}";
