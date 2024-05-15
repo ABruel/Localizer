@@ -9,7 +9,6 @@ public static class I18NextBuilderExtensions
     {
         builder
             .AddLanguageDetector<ThreadLanguageDetector>()
-            .AddInterpolator<HtmlInterpolator>()
             .Configure(o => o.DetectLanguageOnEachTranslation = true);
 
         return builder;
