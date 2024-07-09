@@ -66,12 +66,13 @@ public class DefaultTranslator : ITranslator
         if (options == null)
             throw new ArgumentNullException(nameof(options));
 
-        string actualNamespace = args["Namespace"] as string ?? options.DefaultNamespace;
+        args.TryGetValue("Namespace", out var actualNamespace);
+        actualNamespace = actualNamespace as string ?? options.DefaultNamespace;
 
         if (language.ToLower() == "cimode")
             return $"{actualNamespace}:{key}";
 
-        var result = await ResolveTranslationAsync(language, actualNamespace, key, args, options);
+        var result = await ResolveTranslationAsync(language, actualNamespace.ToString(), key, args, options);
 
         if (result == null)
             throw new TranslationNotFoundException(await ExtendTranslationAsync(key, key, language, args, options));
