@@ -36,6 +36,7 @@ public class TranslationTree : ITranslationTree
 
             if (node is TranslationGroup group)
             {
+
                 var foundNode = group.Children.FirstOrDefault(c => c.Name == part);
 
                 if (foundNode != null)

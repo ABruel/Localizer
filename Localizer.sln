@@ -1,22 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer", "src\Localizer\Localizer.csproj", "{71F47BEC-C9FB-4393-AA78-8D7AD2D51863}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34818.151
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer", "src\Localizer\Localizer.csproj", "{71F47BEC-C9FB-4393-AA78-8D7AD2D51863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer.Extensions", "src\Localizer.Extensions\Localizer.Extensions.csproj", "{96A82CDF-B1FF-41D8-976E-52ECF9CFD82A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Extensions", "src\Localizer.Extensions\Localizer.Extensions.csproj", "{96A82CDF-B1FF-41D8-976E-52ECF9CFD82A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer.PolyglotJs", "src\Localizer.PolyglotJs\Localizer.PolyglotJs.csproj", "{0A39C392-2FB2-4D24-9A82-919F5C626A68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.PolyglotJs", "src\Localizer.PolyglotJs\Localizer.PolyglotJs.csproj", "{0A39C392-2FB2-4D24-9A82-919F5C626A68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer.Tests", "tests\Localizer.Tests\Localizer.Tests.csproj", "{8041F656-7FAD-48A8-91C5-1D7239984CB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Tests", "tests\Localizer.Tests\Localizer.Tests.csproj", "{8041F656-7FAD-48A8-91C5-1D7239984CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer.AspNetCore", "src\Localizer.AspNetCore\Localizer.AspNetCore.csproj", "{AC1CFDD9-1DBC-4E21-A1CF-F9C154BBF177}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.AspNetCore", "src\Localizer.AspNetCore\Localizer.AspNetCore.csproj", "{AC1CFDD9-1DBC-4E21-A1CF-F9C154BBF177}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.WebApp", "samples\Example.WebApp\Example.WebApp.csproj", "{7A9BDD90-BC7A-4B7D-A3F0-42A83D04E6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.WebApp", "samples\Example.WebApp\Example.WebApp.csproj", "{7A9BDD90-BC7A-4B7D-A3F0-42A83D04E6C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer.Abstractions", "src\Localizer.Abstractions\Localizer.Abstractions.csproj", "{42AB2562-8DA6-41E1-ABD5-152DDD622E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Abstractions", "src\Localizer.Abstractions\Localizer.Abstractions.csproj", "{42AB2562-8DA6-41E1-ABD5-152DDD622E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ConsoleApp.NetCore", "samples\Example.ConsoleApp.NetCore\Example.ConsoleApp.NetCore.csproj", "{4F2A9939-3351-465F-9E4C-12616F64A0CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.ConsoleApp.NetCore", "samples\Example.ConsoleApp.NetCore\Example.ConsoleApp.NetCore.csproj", "{4F2A9939-3351-465F-9E4C-12616F64A0CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer.Benchmarks", "tests\Localizer.Benchmarks\Localizer.Benchmarks.csproj", "{28A8E334-B484-47BF-A46F-0142830C9951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Benchmarks", "tests\Localizer.Benchmarks\Localizer.Benchmarks.csproj", "{28A8E334-B484-47BF-A46F-0142830C9951}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Bundle", "src\Localizer.Bundle\Localizer.Bundle.csproj", "{22A8E334-B484-47BF-A46F-0142830C9951}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +37,6 @@ Global
 		{96A82CDF-B1FF-41D8-976E-52ECF9CFD82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96A82CDF-B1FF-41D8-976E-52ECF9CFD82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96A82CDF-B1FF-41D8-976E-52ECF9CFD82A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D79824CC-B177-4BD7-9B06-C780AA573B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D79824CC-B177-4BD7-9B06-C780AA573B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D79824CC-B177-4BD7-9B06-C780AA573B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D79824CC-B177-4BD7-9B06-C780AA573B8F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A39C392-2FB2-4D24-9A82-919F5C626A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A39C392-2FB2-4D24-9A82-919F5C626A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A39C392-2FB2-4D24-9A82-919F5C626A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,21 +61,19 @@ Global
 		{4F2A9939-3351-465F-9E4C-12616F64A0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F2A9939-3351-465F-9E4C-12616F64A0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F2A9939-3351-465F-9E4C-12616F64A0CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15DAA359-C831-4260-9F6F-6255B7A45110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15DAA359-C831-4260-9F6F-6255B7A45110}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15DAA359-C831-4260-9F6F-6255B7A45110}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15DAA359-C831-4260-9F6F-6255B7A45110}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3972D474-9549-450D-855A-8E75C4C01D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3972D474-9549-450D-855A-8E75C4C01D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3972D474-9549-450D-855A-8E75C4C01D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3972D474-9549-450D-855A-8E75C4C01D6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5690CC5-1E6E-4327-987D-211BC54AE9AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5690CC5-1E6E-4327-987D-211BC54AE9AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5690CC5-1E6E-4327-987D-211BC54AE9AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5690CC5-1E6E-4327-987D-211BC54AE9AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28A8E334-B484-47BF-A46F-0142830C9951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28A8E334-B484-47BF-A46F-0142830C9951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28A8E334-B484-47BF-A46F-0142830C9951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28A8E334-B484-47BF-A46F-0142830C9951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22A8E334-B484-47BF-A46F-0142830C9951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22A8E334-B484-47BF-A46F-0142830C9951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22A8E334-B484-47BF-A46F-0142830C9951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22A8E334-B484-47BF-A46F-0142830C9951}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CF75C8D-4EC6-461F-8783-59233686F0F2}
 	EndGlobalSection
 EndGlobal

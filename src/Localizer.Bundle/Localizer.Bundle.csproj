@@ -4,7 +4,7 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/optimuz-optz/Localizer</RepositoryUrl>
         <PackageProjectUrl>https://github.com/optimuz-optz/Localizer</PackageProjectUrl>
-        <Version>1.3.3</Version>
+        <Version>2.0.0</Version>
         <Authors>DarkLiKally</Authors>
         <RepositoryType>git</RepositoryType>
         <LangVersion>latest</LangVersion>
@@ -16,7 +16,13 @@
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DocumentationFile>bin\Release\Localizer.xml</DocumentationFile>
     </PropertyGroup>
-    <ItemGroup>
+    <ItemGroup Condition=" '$(Configuration)' == 'Debug'">
+        <Content Include="bin\$(Configuration)\$(TargetFramework)\*.*">
+            <PackagePath>lib\$(TargetFramework)\</PackagePath>
+            <Pack>true</Pack>
+        </Content>
+    </ItemGroup>
+    <ItemGroup Condition=" '$(Configuration)' == 'Release'">
         <Content Include="bin\$(Configuration)\$(TargetFramework)\Localizer.dll">
             <PackagePath>lib\$(TargetFramework)\</PackagePath>
             <Pack>true</Pack>

@@ -72,7 +72,7 @@ public class XmlFileBackend : ITranslationBackend
     private static void PopulateTreeBuilder(string path, XContainer node, ITranslationTreeBuilder builder)
     {
         if (path != string.Empty)
-            path = path + ".";
+            path = path + "#";
 
         foreach (var childNode in node.Elements())
         {

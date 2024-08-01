@@ -72,7 +72,7 @@ public class JsonFileBackend : ITranslationBackend
     private static void PopulateTreeBuilder(string path, JObject node, ITranslationTreeBuilder builder)
     {
         if (path != string.Empty)
-            path = path + ".";
+            path = path + "#";
 
         foreach (var childNode in node)
         {

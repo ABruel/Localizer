@@ -23,7 +23,7 @@ public class HierarchicalTranslationTreeBuilder : ITranslationTreeBuilder
                 var part = parts[i];
 
                 if (i > 0)
-                    currentPath += ".";
+                    currentPath += "#";
                 currentPath += part;
 
                 if (_groups.ContainsKey(currentPath))

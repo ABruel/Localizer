@@ -76,7 +76,7 @@ public class IniFileBackend : ITranslationBackend
             var section = iniSection;
 
             if (section != string.Empty)
-                section = section + ".";
+                section = section + "#";
 
             foreach (var iniKey in iniReader.GetKeys(iniSection))
             {
