@@ -10,7 +10,7 @@ public class HierarchicalTranslationTreeBuilder : ITranslationTreeBuilder
 
     public void AddTranslation(string key, string text)
     {
-        var parts = key.Split('#');
+        var parts = new string[] { key };
 
         var parentGroup = _root;
 

@@ -26,7 +26,7 @@ public class TranslationTree : ITranslationTree
 
     public string GetValue(string key, IDictionary<string, object> args)
     {
-        var parts = key.Split('#');
+        var parts = new string[] { key };
 
         var node = Root;
 

@@ -170,7 +170,7 @@ public class DefaultTranslator : ITranslator
 
     private async Task OnMissingKey(string language, string @namespace, string key, List<string> possibleKeys)
     {
-        _logger.LogInformation("Missing translation for {namespace}:{key} in language {language}.", @namespace, key, language);
+        _logger.LogDebug("Missing translation for {namespace}:{key} in language {language}.", @namespace, key, language);
 
         if (MissingKey == null && MissingKeyHandlers.Count == 0)
             return;
@@ -252,7 +252,7 @@ public class DefaultTranslator : ITranslator
         if (result == null)
             await OnMissingKey(language, ns, key, possibleKeys);
 
-        _logger.LogInformation("The resolved translation for {ns}:{key} on language {language} was \"{result}\"", ns, key, language, result);
+        _logger.LogDebug("The resolved translation for {ns}:{key} on language {language} was \"{result}\"", ns, key, language, result);
 
         return result;
     }
