@@ -152,11 +152,19 @@ public class I18NextNet : II18Next
 
     private async Task<string> Ta(string language, string key, object args, TranslationOptions options)
     {
+        var stopWatch = new System.Diagnostics.Stopwatch();
+        stopWatch.Start();
         if (DetectLanguageOnEachTranslation)
             UseDetectedLanguage();
 
-        var argsDict = args.ToDictionary();
+        stopWatch.Stop();
+        Logger.LogDebug($"DetectLanguageOnEachTranslation took {stopWatch.ElapsedMilliseconds}ms");
 
-        return await Translator.TranslateAsync(language, key, argsDict, options);
+        var argsDict = args.ToDictionary();
+        stopWatch.Restart();
+        var a = await Translator.TranslateAsync(language, key, argsDict, options);
+        stopWatch.Stop();
+        Logger.LogDebug($"Translator.TranslateAsync took {stopWatch.ElapsedMilliseconds}ms");
+        return a;
     }
 }

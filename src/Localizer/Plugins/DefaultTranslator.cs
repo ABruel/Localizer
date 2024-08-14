@@ -59,6 +59,7 @@ public class DefaultTranslator : ITranslator
 
     public virtual async Task<string> TranslateAsync(string language, string key, IDictionary<string, object> args, TranslationOptions options)
     {
+        var stopWatch = new System.Diagnostics.Stopwatch();
         if (string.IsNullOrWhiteSpace(language))
             throw new ArgumentNullException(nameof(language));
         if (string.IsNullOrWhiteSpace(key))
@@ -71,13 +72,20 @@ public class DefaultTranslator : ITranslator
 
         if (language.ToLower() == "cimode")
             return $"{actualNamespace}:{key}";
-
+        stopWatch.Start();
         var result = await ResolveTranslationAsync(language, actualNamespace.ToString(), key, args, options);
+        stopWatch.Stop();
+        _logger.LogDebug("Translation took {time}ms", stopWatch.ElapsedMilliseconds);
 
         if (result == null)
             throw new TranslationNotFoundException(await ExtendTranslationAsync(key, key, language, args, options));
 
-        return await ExtendTranslationAsync(result, key, language, args, options);
+        stopWatch.Restart();
+        var a = await ExtendTranslationAsync(result, key, language, args, options);
+        stopWatch.Stop();
+
+        _logger.LogDebug("Postprocessing took {time}ms", stopWatch.ElapsedMilliseconds);
+        return a;
     }
 
     private static bool CheckForSpecialArg(IDictionary<string, object> args, string key, params Type[] allowedTypes)
