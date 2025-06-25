@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <BaseOutputPath>..\Localizer.Bundle\bin\</BaseOutputPath>
         <Authors>DarkLiKally</Authors>
         <Company>DarkLiKally</Company>
@@ -19,6 +19,6 @@
         <DocumentationFile>bin\Release\Localizer.PolyglotJs.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Localizer\Localizer.csproj"/>
+        <ProjectReference Include="..\Localizer\Localizer.csproj" />
     </ItemGroup>
 </Project>

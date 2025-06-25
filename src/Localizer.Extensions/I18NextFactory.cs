@@ -1,7 +1,6 @@
 using System.Linq;
 using Localizer.Backends;
 using Localizer.Extensions.Configuration;
-using Localizer.Logging;
 using Localizer.Plugins;
 using Microsoft.Extensions.Options;
 
@@ -11,17 +10,15 @@ public class I18NextFactory : II18NextFactory
 {
     private readonly ITranslationBackend _backend;
     private readonly ILanguageDetector _languageDetector;
-    private readonly ILogger _logger;
     private readonly IOptions<I18NextOptions> _options;
     private readonly ITranslator _translator;
 
-    public I18NextFactory(ITranslationBackend backend, ITranslator translator, ILanguageDetector languageDetector, ILogger logger,
+    public I18NextFactory(ITranslationBackend backend, ITranslator translator, ILanguageDetector languageDetector, 
         IOptions<I18NextOptions> options)
     {
         _backend = backend;
         _translator = translator;
         _languageDetector = languageDetector;
-        _logger = logger;
         _options = options;
     }
 
@@ -31,7 +28,6 @@ public class I18NextFactory : II18NextFactory
         {
             Language = _options.Value.DefaultLanguage,
             DefaultNamespace = _options.Value.DefaultNamespace,
-            Logger = _logger,
             DetectLanguageOnEachTranslation = _options.Value.DetectLanguageOnEachTranslation
         };
         instance.SetFallbackLanguages(_options.Value.FallbackLanguages.ToArray());

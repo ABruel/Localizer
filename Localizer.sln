@@ -9,17 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Extensions", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.PolyglotJs", "src\Localizer.PolyglotJs\Localizer.PolyglotJs.csproj", "{0A39C392-2FB2-4D24-9A82-919F5C626A68}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Tests", "tests\Localizer.Tests\Localizer.Tests.csproj", "{8041F656-7FAD-48A8-91C5-1D7239984CB5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.AspNetCore", "src\Localizer.AspNetCore\Localizer.AspNetCore.csproj", "{AC1CFDD9-1DBC-4E21-A1CF-F9C154BBF177}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.WebApp", "samples\Example.WebApp\Example.WebApp.csproj", "{7A9BDD90-BC7A-4B7D-A3F0-42A83D04E6C3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Abstractions", "src\Localizer.Abstractions\Localizer.Abstractions.csproj", "{42AB2562-8DA6-41E1-ABD5-152DDD622E6D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.ConsoleApp.NetCore", "samples\Example.ConsoleApp.NetCore\Example.ConsoleApp.NetCore.csproj", "{4F2A9939-3351-465F-9E4C-12616F64A0CD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Benchmarks", "tests\Localizer.Benchmarks\Localizer.Benchmarks.csproj", "{28A8E334-B484-47BF-A46F-0142830C9951}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localizer.Bundle", "src\Localizer.Bundle\Localizer.Bundle.csproj", "{22A8E334-B484-47BF-A46F-0142830C9951}"
 EndProject
