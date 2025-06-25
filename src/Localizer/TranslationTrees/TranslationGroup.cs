@@ -1,12 +1,14 @@
 ﻿namespace Localizer.TranslationTrees;
 
+using System.Collections.Concurrent;
+
 public class TranslationGroup : TranslationTreeNode
 {
-    public TranslationGroup(string name, TranslationTreeNode[] children)
+    public TranslationGroup(string name, ConcurrentDictionary<string, TranslationTreeNode> children)
         : base(name)
     {
         Children = children;
     }
 
-    public TranslationTreeNode[] Children { get; }
+    public ConcurrentDictionary<string, TranslationTreeNode> Children { get; }
 }

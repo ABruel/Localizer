@@ -147,7 +147,7 @@ const publishToNugget = async (newVersion) => {
         `Localizer.Bundle.${newVersion}.nupkg`
     );
 
-    const windowsNuggetCommand = `nuget push ${pathNupkg} -Source "https://nuget.pkg.github.com/optimuz-optz/index.json" -ConfigFile ${pathNugetConfig}`;
+    const windowsNuggetCommand = `dotnet nuget push ${pathNupkg} --source "https://nuget.pkg.github.com/optimuz-optz/index.json"`;
     const linuxNuggetCommand = `dotnet nuget push ${pathNupkg} --source "https://nuget.pkg.github.com/optimuz-optz/index.json" -k $NUGET_KEY`;
 
     const nuggetCommand =
@@ -165,27 +165,31 @@ const commitAndPush = async (newVersion, newFeatAnswer) => {
     );
 };
 
-const runScript = async (scriptPath) => {
-    var process = childProcess.spawn(scriptPath, { shell: true });
-    return await new Promise((accept, reject) => {
-        process.stdout.on("data", (data) => {
-            console.log(`${data}`);
-        });
+function runScript(scriptPath) {
+    var process = childProcess.spawn(scriptPath, {
+        shell: true,
+        stdio: "inherit",
+    });
+    const promise = new Promise((accept, reject) => {
+        // process.stdout.on("data", (data) => {
+        //   console.log(`${data}`);
+        // });
 
-        process.stderr.on("data", (data) => {
-            console.error(`${data}`);
-        });
+        // process.stderr.on("data", (data) => {
+        //   console.error(`${data}`);
+        // });
 
-        process.on("error", (error) => {
-            console.error(`${error.message}`);
-        });
+        // process.on("error", (error) => {
+        //   console.error(`${error.message}`);
+        // });
 
         process.on("close", (code) => {
             console.log(`child process exited with code ${code}`);
             if (parseInt(code) === 0) accept();
-            else throw new Error(`child process exited with code ${code}`);
+            else reject(code);
         });
     });
-};
+    return promise;
+}
 
 main();
