@@ -54,7 +54,7 @@ public class HierarchicalTranslationTreeBuilder : ITranslationTreeBuilder
 
     private TranslationGroup BuildNode(string name, Dictionary<string, object> parentNode)
     {
-        var nodes = new List<TranslationTreeNode>();
+        var nodes = new System.Collections.Concurrent.ConcurrentDictionary<string, TranslationTreeNode>();
 
         foreach (var node in parentNode)
         {
@@ -62,17 +62,17 @@ public class HierarchicalTranslationTreeBuilder : ITranslationTreeBuilder
             {
                 var group = BuildNode(node.Key, childGroup);
 
-                nodes.Add(group);
+                nodes.AddOrUpdate(group.Name, (_) => group, (_, _) => group);
             }
 
             else
             {
                 var entry = new Translation(node.Key, node.Value as string);
 
-                nodes.Add(entry);
+                nodes.AddOrUpdate(entry.Name, (_) => entry, (_, _) => entry);
             }
         }
 
-        return new TranslationGroup(name, nodes.ToArray());
+        return new TranslationGroup(name, nodes);
     }
 }

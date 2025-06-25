@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Localizer.Backends;
 using Localizer.Internal;
-using Localizer.Logging;
 using Localizer.Plugins;
 
 namespace Localizer;
@@ -21,7 +20,6 @@ public class I18NextNet : II18Next
         Translator = translator ?? throw new ArgumentNullException(nameof(translator));
 
         Language = "en-US";
-        Logger = new TraceLogger();
         LanguageDetector = languageDetector ?? new DefaultLanguageDetector("en-US");
     }
 
@@ -36,8 +34,6 @@ public class I18NextNet : II18Next
         get => _options.FallbackNamespaces;
         set => _options.FallbackNamespaces = value;
     }
-
-    public ILogger Logger { get; set; }
 
     public ITranslationBackend Backend { get; }
 
@@ -152,19 +148,11 @@ public class I18NextNet : II18Next
 
     private async Task<string> Ta(string language, string key, object args, TranslationOptions options)
     {
-        var stopWatch = new System.Diagnostics.Stopwatch();
-        stopWatch.Start();
         if (DetectLanguageOnEachTranslation)
             UseDetectedLanguage();
 
-        stopWatch.Stop();
-        Logger.LogDebug($"DetectLanguageOnEachTranslation took {stopWatch.ElapsedMilliseconds}ms");
-
         var argsDict = args.ToDictionary();
-        stopWatch.Restart();
         var a = await Translator.TranslateAsync(language, key, argsDict, options);
-        stopWatch.Stop();
-        Logger.LogDebug($"Translator.TranslateAsync took {stopWatch.ElapsedMilliseconds}ms");
         return a;
     }
 }

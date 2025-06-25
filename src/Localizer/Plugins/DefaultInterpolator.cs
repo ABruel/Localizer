@@ -4,14 +4,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Localizer.Formatters;
 using Localizer.Internal;
-using Localizer.Logging;
 using Newtonsoft.Json.Linq;
 
 namespace Localizer.Plugins;
 
 public class DefaultInterpolator : IInterpolator
 {
-    private readonly ILogger _logger;
     private const string ExpressionPrefixPlain = @"{{";
     private const string ExpressionPrefix = @"\{\{";
     private const string ExpressionSuffix = @"\}\}";
@@ -44,10 +42,9 @@ public class DefaultInterpolator : IInterpolator
 
     public bool UseFastNestingMatch { get; set; } = true;
 
-    public DefaultInterpolator(ILogger logger)
+    public DefaultInterpolator()
     {
-        _logger = logger;
-        DefaultFormatter = new DefaultFormatter(_logger);
+        DefaultFormatter = new DefaultFormatter();
     }
 
     public virtual bool CanNest(string source)

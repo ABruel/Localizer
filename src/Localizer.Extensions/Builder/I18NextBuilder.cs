@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Localizer.Backends;
 using Localizer.Extensions.Configuration;
-using Localizer.Logging;
 using Localizer.Plugins;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -270,64 +269,6 @@ public class I18NextBuilder
         return this;
     }
 
-
-    /// <summary>
-    ///     Registers the provided instance of a logger plugin.
-    /// </summary>
-    /// <remarks>
-    ///     <para>
-    ///         Note: The configuring I18Next instance can only use one logger at a time. By default the last registered
-    ///         logger will be used.
-    ///     </para>
-    /// </remarks>
-    /// <param name="backend">The logger instance.</param>
-    /// <returns>The current I18Next builder instance.</returns>
-    public I18NextBuilder AddLogger(ILogger backend)
-    {
-        Services.AddSingleton(backend);
-
-        return this;
-    }
-
-    /// <summary>
-    ///     Registers a new logger plugin of the given type.
-    /// </summary>
-    /// <remarks>
-    ///     <para>
-    ///         Note: The configuring I18Next instance can only use one logger at a time. By default the last registered
-    ///         logger will be used.
-    ///     </para>
-    /// </remarks>
-    /// <typeparam name="T">The logger plugin type.</typeparam>
-    /// <returns>The current I18Next builder instance.</returns>
-    public I18NextBuilder AddLogger<T>()
-        where T : class, ILogger
-    {
-        Services.AddSingleton<ILogger, T>();
-
-        return this;
-    }
-
-    /// <summary>
-    ///     Registers a new logger plugin using a factory function.
-    /// </summary>
-    /// <remarks>
-    ///     <para>
-    ///         Note: The configuring I18Next instance can only use one logger at a time. By default the last registered
-    ///         logger will be used.
-    ///     </para>
-    /// </remarks>
-    /// <param name="factory">Logger plugin factory function.</param>
-    /// <typeparam name="T">The logger plugin type.</typeparam>
-    /// <returns>The current I18Next builder instance.</returns>
-    public I18NextBuilder AddLogger<T>(Func<IServiceProvider, T> factory)
-        where T : class, ILogger
-    {
-        Services.AddSingleton<ILogger, T>(factory);
-
-        return this;
-    }
-
     /// <summary>
     ///     Registers the provided instance of a missing key handler plugin.
     /// </summary>
@@ -581,7 +522,6 @@ public class I18NextBuilder
     /// </summary>
     public void Build()
     {
-        AddSingletonIfNotPresent(DefaultLoggerFactory);
         AddSingletonIfNotPresent<IPluralResolver, DefaultPluralResolver>();
         AddSingletonIfNotPresent<ILanguageDetector>(DefaultLanguageDetectorFactory);
         AddSingletonIfNotPresent<ITranslationBackend, JsonFileBackend>();
@@ -689,8 +629,7 @@ public class I18NextBuilder
     {
         var formatters = c.GetRequiredService<IEnumerable<IFormatter>>();
 
-        var logger = c.GetRequiredService<ILogger>();
-        var instance = new DefaultInterpolator(logger);
+        var instance = new DefaultInterpolator();
 
         instance.Formatters.AddRange(formatters);
 
@@ -704,26 +643,16 @@ public class I18NextBuilder
         return new DefaultLanguageDetector(options.Value.DefaultLanguage);
     }
 
-    private static ILogger DefaultLoggerFactory(IServiceProvider c)
-    {
-        var msLogger = c.GetService<Microsoft.Extensions.Logging.ILogger>();
-
-        if (msLogger != null)
-            return new DefaultExtensionsLogger(msLogger);
-
-        return new TraceLogger();
-    }
 
     private static DefaultTranslator DefaultTranslatorFactory(IServiceProvider c)
     {
         var backend = c.GetRequiredService<ITranslationBackend>();
-        var logger = c.GetRequiredService<ILogger>();
         var pluralResolver = c.GetRequiredService<IPluralResolver>();
         var interpolator = c.GetRequiredService<IInterpolator>();
         var postProcessors = c.GetService<IEnumerable<IPostProcessor>>();
         var missingKeyHandlers = c.GetService<IEnumerable<IMissingKeyHandler>>();
 
-        var instance = new DefaultTranslator(backend, logger, pluralResolver, interpolator);
+        var instance = new DefaultTranslator(backend, pluralResolver, interpolator);
 
         if (postProcessors != null)
             instance.PostProcessors.AddRange(postProcessors);

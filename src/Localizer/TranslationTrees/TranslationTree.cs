@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 namespace Localizer.TranslationTrees;
 
@@ -37,7 +38,7 @@ public class TranslationTree : ITranslationTree
             if (node is TranslationGroup group)
             {
 
-                var foundNode = group.Children.FirstOrDefault(c => c.Name == part);
+                var foundNode = group.Children[part];
 
                 if (foundNode != null)
                     node = foundNode;
@@ -63,10 +64,11 @@ public class TranslationTree : ITranslationTree
 
     public string Namespace { get; set; }
 
-    private void MapTranslationGroup(IDictionary<string, string> result, TranslationGroup group)
+    private static void MapTranslationGroup(IDictionary<string, string> result, TranslationGroup group)
     {
-        foreach (var node in group.Children)
+        foreach (var kvp in group.Children)
         {
+            var node = kvp.Value;
             if (node is TranslationGroup subGroup)
                 MapTranslationGroup(result, subGroup);
             else if (node is Translation translation)

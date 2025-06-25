@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <BaseOutputPath>..\Localizer.Bundle\bin\</BaseOutputPath>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <Product>Localizer</Product>
         <Authors>DarkLiKally</Authors>
         <Company>DarkLiKally</Company>
@@ -19,12 +19,12 @@
         <DocumentationFile>bin\Release\Localizer.Extensions.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Localizer\Localizer.csproj"/>
+        <ProjectReference Include="..\Localizer\Localizer.csproj" />
     </ItemGroup>
 </Project>

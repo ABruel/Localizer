@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Globalization;
-using Localizer.Logging;
 using Localizer.Plugins;
 
 namespace Localizer.Formatters;
 
 public class DefaultFormatter : IFormatter
 {
-    private readonly ILogger _logger;
 
-    public DefaultFormatter(ILogger logger)
+    public DefaultFormatter()
     {
-        _logger = logger;
     }
 
     public bool CanFormat(object value, string format, string language)
@@ -36,12 +33,10 @@ public class DefaultFormatter : IFormatter
         }
         catch (CultureNotFoundException ex)
         {
-            _logger.LogInformation(ex, "Unable to find a culture info for language \"{language}\". Using invariant culture for formatting the value.");
             return string.Format(CultureInfo.InvariantCulture, formatString, value);
         }
-        catch (FormatException ex)
+        catch
         {
-            _logger.LogWarning(ex, "The provided format string \"{format}\" is not compatible with the default .NET string formatting functionality. Check your format string or register a custom formatter to handle this format.");
             return value.ToString();
         }
     }

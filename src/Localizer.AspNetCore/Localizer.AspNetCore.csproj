@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <BaseOutputPath>..\Localizer.Bundle\bin\</BaseOutputPath>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/DarkLiKally/Localizer</RepositoryUrl>
         <PackageProjectUrl>https://github.com/DarkLiKally/Localizer</PackageProjectUrl>
