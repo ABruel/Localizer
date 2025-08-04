@@ -4,7 +4,7 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/optimuz-optz/Localizer</RepositoryUrl>
         <PackageProjectUrl>https://github.com/optimuz-optz/Localizer</PackageProjectUrl>
-        <Version>2.1.0</Version>
+        <Version>2.1.1</Version>
         <Authors>DarkLiKally</Authors>
         <RepositoryType>git</RepositoryType>
         <LangVersion>latest</LangVersion>

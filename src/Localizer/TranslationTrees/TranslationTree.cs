@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
 
 namespace Localizer.TranslationTrees;
 
@@ -37,10 +35,7 @@ public class TranslationTree : ITranslationTree
 
             if (node is TranslationGroup group)
             {
-
-                var foundNode = group.Children[part];
-
-                if (foundNode != null)
+                if (group.Children.TryGetValue(part, out var foundNode) && foundNode != null)
                     node = foundNode;
                 else
                     return null;
